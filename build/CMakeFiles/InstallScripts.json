@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/owenschu/SecuringMicroservices_Service-1/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

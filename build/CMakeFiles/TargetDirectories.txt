@@ -1,0 +1,3 @@
+/home/owenschu/SecuringMicroservices_Service-1/build/CMakeFiles/service-1_server.dir
+/home/owenschu/SecuringMicroservices_Service-1/build/CMakeFiles/edit_cache.dir
+/home/owenschu/SecuringMicroservices_Service-1/build/CMakeFiles/rebuild_cache.dir
