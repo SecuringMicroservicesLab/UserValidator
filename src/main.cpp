@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm> // Required for std::find
 #include <grpcpp/grpcpp.h>
 #include "../services.grpc.pb.h"
+
+#include "../include/laserpants/dotenv/dotenv.h"
 
 using namespace grpc;
 using namespace secure_lab;
@@ -46,19 +47,21 @@ class ValidatorServiceImpl final : public Validator::Service {
     }
 };
 
-int main() {
+int main()
+{
+  dotenv::init();
+
   ValidatorServiceImpl service;
   ServerBuilder builder;
 
-  // Listen on port 50051 (Locked inside the VPC, waiting for Orchestrator)
-  std::string server_address("0.0.0.0:50051");
+  std::string server_address = dotenv::getenv("VALIDATOR_ADDRESS", "0.0.0.0:50051");
+
   builder.AddListeningPort(server_address, InsecureServerCredentials());
   builder.RegisterService(&service);
 
   std::unique_ptr<Server> server(builder.BuildAndStart());
   std::cout << "[Validator] Server listening on " << server_address << std::endl;
 
-  // Keep the server running indefinitely
   server->Wait();
   return 0;
 }

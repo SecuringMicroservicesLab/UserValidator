@@ -7,7 +7,7 @@ SRCS = src/main.cpp services.pb.cc services.grpc.pb.cc
 OBJS = $(SRCS:.cpp=.o)
 
 server_validator: $(SRCS)
-	g++ $(CXXFLAGS) $(SRCS) $(LDFLAGS) -o server_validator
+	g++ $(CXXFLAGS) $(SRCS) $(LDFLAGS) -o server_validator -I include/laserpants/dotenv
 
 clean:
 	rm -f server_validator
